@@ -11,14 +11,14 @@ namespace DataLayer
             : base(options)
         {
             this.ApplicationUser =  Set<ApplicationUser>();
-            this.Courses = Set<Course>();
+            this.Courses = Set<Cource>();
             this.UserCourses = Set<UserCourse>();
         
         }
 
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<UserCourse> UserCourses { get; set; }
-        public DbSet<Course> Courses { get; set; }
+        public DbSet<Cource> Courses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

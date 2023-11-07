@@ -1,6 +1,6 @@
 ﻿namespace Entity
 {
-    public class Course
+    public class Cource
     {
         public int Id { get; set; }
         public string? CourseName { get; set; }

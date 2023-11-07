@@ -11,16 +11,13 @@ namespace Entity
         [MinLength(3)]
         public string? LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        // public string Email { get; set; }
-        // public string PhoneNumber { get; set; }
         public string Address
         {
             get { return _address; }
             set { _address = value.Replace(".", " ").Replace("  ", " "); }
         }
-
         public virtual ICollection<UserCourse>? UserCourses { get; set; }
-
         public string GetFullName() => $"{FirstName} {LastName}";
+        public string? AccessToken { get; set; }
     }
 }

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Entity.EntityConfiguration
 {
-    public class CourseConfiguration : IEntityTypeConfiguration<Course>
+    public class CourseConfiguration : IEntityTypeConfiguration<Cource>
     {
-        public void Configure(EntityTypeBuilder<Course> builder)
+        public void Configure(EntityTypeBuilder<Cource> builder)
         {
 
             // Configure primary key
@@ -13,7 +13,7 @@ namespace Entity.EntityConfiguration
 
             // Configure properties
             builder.Property(c => c.CourseName).IsRequired().HasMaxLength(50);
-            
+
             // Configure relationships
             builder.HasMany(c => c.UserCourses)
                 .WithOne(uc => uc.Course)

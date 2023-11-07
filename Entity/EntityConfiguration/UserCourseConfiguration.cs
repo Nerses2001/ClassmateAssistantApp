@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
 
 namespace Entity.EntityConfiguration
 {
@@ -9,12 +10,11 @@ namespace Entity.EntityConfiguration
         {
             builder.HasKey(uc => new { uc.UserId, uc.CourseId });
 
-
-            // Configure relationships
             builder.HasOne(uc => uc.User)
-                .WithMany(u => u.UserCourses)
-                .HasForeignKey(uc => uc.UserId)
-                .IsRequired();
+                     .WithMany(u => u.UserCourses)
+                     .HasForeignKey(uc => uc.UserId)
+                     .IsRequired();
+
         }
     }
 }
