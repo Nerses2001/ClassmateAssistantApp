@@ -3,13 +3,13 @@
 namespace DataLayer.IRepository
 {
     public interface ICourseRepository : 
-        IRepositoryBase<Course>
+        IRepositoryBase<Cource>
     {
-        Task<Course> GetByIdAsync(int courseId);
-        Task AddAsync(Course course);
-        Task UpdateAsync(Course course);
+        Task<Cource> GetByIdAsync(int courseId);
+        Task AddAsync(Cource course);
+        Task UpdateAsync(Cource course);
         Task DeleteAsync(int courseId);
-        Task<ICollection<Course>> GetAllAsync();
+        Task<ICollection<Cource>> GetAllAsync();
 
     }
 }

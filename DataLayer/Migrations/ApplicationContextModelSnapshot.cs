@@ -30,6 +30,9 @@ namespace DataLayer.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("AccessToken")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -102,10 +105,10 @@ namespace DataLayer.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("ApplicationUsers", (string)null);
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Entity.Course", b =>
+            modelBuilder.Entity("Entity.Cource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -273,7 +276,7 @@ namespace DataLayer.Migrations
 
             modelBuilder.Entity("Entity.UserCourse", b =>
                 {
-                    b.HasOne("Entity.Course", "Course")
+                    b.HasOne("Entity.Cource", "Course")
                         .WithMany("UserCourses")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -346,7 +349,7 @@ namespace DataLayer.Migrations
                     b.Navigation("UserCourses");
                 });
 
-            modelBuilder.Entity("Entity.Course", b =>
+            modelBuilder.Entity("Entity.Cource", b =>
                 {
                     b.Navigation("UserCourses");
                 });

@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 namespace DataLayer.Repository
 {
     public class CourseRepository : 
-        RepositoryBase<Course>, 
+        RepositoryBase<Cource>, 
         ICourseRepository
     {
         public CourseRepository(ApplicationContext context) :
             base(context)
         { }
 
-        public async Task AddAsync(Course course)
+        public async Task AddAsync(Cource course)
         {
             await _context.Courses.AddAsync(course);
             await SaveRepositoryChangesAsync();
@@ -30,13 +30,13 @@ namespace DataLayer.Repository
                 throw new Exception("Cource Not Found");
         }
 
-        public async Task<ICollection<Course>> GetAllAsync()
+        public async Task<ICollection<Cource>> GetAllAsync()
         {
             var cources = await _context.Courses.ToListAsync();
             return cources;
         }
 
-        public async Task<Course> GetByIdAsync(int courseId)
+        public async Task<Cource> GetByIdAsync(int courseId)
         {
             
             var exitCource = await _context.Courses.
@@ -49,7 +49,7 @@ namespace DataLayer.Repository
                 throw new Exception("Cource Not Found");
         }
 
-        public async Task UpdateAsync(Course course)
+        public async Task UpdateAsync(Cource course)
         {
             var exitCource = await _context.Courses
                 .SingleOrDefaultAsync(c => c.Id == course.Id);

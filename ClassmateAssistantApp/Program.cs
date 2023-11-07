@@ -1,3 +1,4 @@
+using ClassmateAssistantApp.Extansions;
 using DataLayer;
 using DataLayer.IRepository;
 using DataLayer.Repository;
@@ -10,11 +11,15 @@ options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")
                     ));
 
+builder.Services.AddRouting();
+
+
 // Repository
 builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<IUserCourseRepository, UserCourseRepository>();
 
+builder.Services.AddAutoMapperService();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
