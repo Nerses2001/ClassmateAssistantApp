@@ -1,4 +1,5 @@
 ﻿
+using Entity;
 using Model;
 
 namespace BusinessLayer.IService
@@ -17,6 +18,10 @@ namespace BusinessLayer.IService
         void DeleteUserByEamil(string email);
         Task<ICollection<ApplicationUserDTO>> GetAllUsersAsync();
 
+        Task<UserManagerResponse> LoginUserAsync(LoginModel model);
+        Task<UserManagerResponse> RegisterUserAsync(RegisterModel model);
+
+        ApplicationUser GetById(string userId);
 
     }
 }

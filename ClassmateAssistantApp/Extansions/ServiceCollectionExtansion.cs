@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using ClassmateAssistantApp.Filters;
+using ClassmateAssistantApp.Middleware;
 using DataLayer;
 using Entity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.OpenApi.Models;
 using Model.Mapper;
 
 namespace ClassmateAssistantApp.Extansions
@@ -23,7 +26,9 @@ namespace ClassmateAssistantApp.Extansions
             services.AddSingleton(mapper);
             return services;
         }
-        public static IServiceCollection AddIdentityServer(this IServiceCollection services)
+
+
+        public static IServiceCollection AddIdentityServers(this IServiceCollection services)
         {
             services.AddIdentity<ApplicationUser, IdentityRole>
                 (c =>
@@ -40,6 +45,29 @@ namespace ClassmateAssistantApp.Extansions
 
             return services;
 
+        }
+
+        public static IServiceCollection AddSwaggerServices(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "HouseBookingAPI", Description = "Description for House Booking API", Version = "v1" });
+                c.OperationFilter<AddAuthHeaderOperationFilter>();
+                c.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
+                });
+
+
+                c.DocumentFilter<SwaggerAddEnumDescriptionsFilter>();
+            });
+
+            return services;
         }
     }
 }

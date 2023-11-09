@@ -5,6 +5,7 @@ namespace Model
 {
     public class RegisterModel
     {
+        
         [Required(ErrorMessage = "Custom error message for Email is required")]
         [StringLength(120, MinimumLength = 3, ErrorMessage = "Custom error message for Email length")]
         [EmailAddress(ErrorMessage = "Custom error message for Email format")]
@@ -17,24 +18,25 @@ namespace Model
         [Required(ErrorMessage = "Custom error message for ConfirmPassword is required")]
         [StringLength(50, MinimumLength = 8, ErrorMessage = "Custom error message for ConfirmPassword length")]
         [Compare("Password", ErrorMessage = "Custom error message for ConfirmPassword mismatch")]
+ 
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Custom error message for FirstName is required")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Custom error message for FirstName length")]
-        [RegularExpression("^(?=.{1,50}$)[A-Z][a-z]+(?:[- ][A-Z][a-z]+)*", ErrorMessage = "Custom error message for FirstName format")]
+        [RegularExpression("^(?=.{1,50}$)[A-Z][a-z]+(?:[- ][A-Z][a-z]+)*$", ErrorMessage = "Valid Charactors include (A-Z) (a-z) (' space -)")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Custom error message for LastName is required")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Custom error message for LastName length")]
-        [RegularExpression("^(?=.{1,50}$)[A-Z][a-z]+(?:[- ][A-Z][a-z]+)*", ErrorMessage = "Custom error message for LastName format")]
+        [RegularExpression("^(?=.{1,50}$)[A-Z][a-z]+(?:[- ][A-Z][a-z]+)*$", ErrorMessage = "Valid Charactors include (A-Z) (a-z) (' space -)")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Custom error message for Phone number is required")]
         [Phone(ErrorMessage = "Custom error message for Phone number format")]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Custom error message for Address is required")]
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "Custom error message for Address length")]
+       [Required(ErrorMessage = "Custom error message for Address is required")]
+       [StringLength(100, MinimumLength = 3, ErrorMessage = "Custom error message for Address length")]
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Custom error message for Date of birth is required")]
